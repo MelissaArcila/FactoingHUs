@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mockup: Plantilla Excel para Carga Masiva</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header-info {
+            background: white;
+            padding: 24px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .header-info h1 {
+            font-size: 28px;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+
+        .header-info p {
+            color: #6b7280;
+            font-size: 15px;
+        }
+
+        .excel-preview {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .excel-header {
+            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+            padding: 30px;
+            color: white;
+            text-align: center;
+        }
+
+        .excel-logo {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .excel-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-top: 16px;
+        }
+
+        .excel-instructions {
+            background: #fffbeb;
+            border: 2px solid #fbbf24;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+        }
+
+        .excel-instructions-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #92400e;
+            margin-bottom: 12px;
+        }
+
+        .excel-instructions-text {
+            font-size: 14px;
+            color: #78350f;
+            line-height: 1.8;
+        }
+
+        .excel-table-container {
+            padding: 20px;
+            overflow-x: auto;
+        }
+
+        .excel-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .excel-table th {
+            background: #1e40af;
+            color: white;
+            padding: 12px 10px;
+            text-align: left;
+            font-weight: 600;
+            border: 1px solid #1e3a8a;
+            white-space: nowrap;
+        }
+
+        .excel-table th.required::after {
+            content: ' *';
+            color: #fbbf24;
+            font-weight: bold;
+        }
+
+        .excel-table td {
+            padding: 12px 10px;
+            border: 1px solid #e5e7eb;
+            background: white;
+        }
+
+        .excel-table tr:nth-child(even) td {
+            background: #f9fafb;
+        }
+
+        .excel-table .example-row td {
+            color: #9ca3af;
+            font-style: italic;
+            font-size: 12px;
+        }
+
+        .legend {
+            padding: 20px;
+            background: #eff6ff;
+            border-top: 2px solid #3b82f6;
+        }
+
+        .legend-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1e40af;
+            margin-bottom: 12px;
+        }
+
+        .legend-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 12px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: #1e3a8a;
+        }
+
+        .legend-item svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            margin-top: 2px;
+            color: #3b82f6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-info">
+            <h1>📋 Vista Previa: Plantilla Excel para Carga Masiva</h1>
+            <p>Archivo: <strong>Plantilla_Pagadores.xlsx</strong></p>
+        </div>
+
+        <div class="excel-preview">
+            <!-- Excel Header -->
+            <div class="excel-header">
+                <div class="excel-logo">cdn.factoring●</div>
+                <div class="excel-title">Crear Pagadores</div>
+            </div>
+
+            <!-- Instructions -->
+            <div class="excel-instructions">
+                <div class="excel-instructions-title">Instrucciones para completar la plantilla:</div>
+                <div class="excel-instructions-text">
+                    • Ingrese los datos de este formato y guárdelo como Libro de Excel (.xlsx)<br>
+                    • Por favor, ingrese las tasas con <strong>4 decimales</strong> (ej. 4,0000 o 4.0000)<br>
+                    • Los montos monetarios deben tener <strong>2 decimales</strong> (ej. 100000,00)<br>
+                    • Los campos marcados con <strong>asterisco (*)</strong> son obligatorios<br>
+                    • Si el NIT del pagador ya existe en el sistema, se actualizará su información<br>
+                    • Si el NIT no existe, se creará un nuevo pagador
+                </div>
+            </div>
+
+            <!-- Excel Table -->
+            <div class="excel-table-container">
+                <table class="excel-table">
+                    <thead>
+                        <tr>
+                            <th class="required">NIT Pagador</th>
+                            <th class="required">Razón Social</th>
+                            <th>Dirección oficina línea 1</th>
+                            <th>Dirección oficina línea 2</th>
+                            <th>Ciudad de la oficina</th>
+                            <th>Departamento / Estado</th>
+                            <th>Código postal</th>
+                            <th>País de la oficina</th>
+                            <th>Email de la oficina</th>
+                            <th class="required">Tasa de descuento por defecto</th>
+                            <th class="required">Tasa de desembolso por defecto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="example-row">
+                            <td>900123456</td>
+                            <td>EMPRESA EJEMPLO S.A.S</td>
+                            <td>Calle 100 # 15-20</td>
+                            <td>Edificio Central, Piso 5</td>
+                            <td>Bogotá</td>
+                            <td>Cundinamarca</td>
+                            <td>110111</td>
+                            <td>Colombia</td>
+                            <td>contacto@empresa.com</td>
+                            <td>4,0000</td>
+                            <td>90,0000</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Legend -->
+            <div class="legend">
+                <div class="legend-title">Información importante de los campos:</div>
+                <div class="legend-items">
+                    <div class="legend-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span><strong>NIT Pagador*:</strong> Número de identificación tributaria (solo números)</span>
+                    </div>
+                    <div class="legend-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span><strong>Razón Social*:</strong> Nombre legal completo de la empresa</span>
+                    </div>
+                    <div class="legend-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span><strong>Tasa de descuento*:</strong> Porcentaje con 4 decimales (ej. 4,0000). Debe ser >= 0</span>
+                    </div>
+                    <div class="legend-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span><strong>Tasa de desembolso*:</strong> Porcentaje con 4 decimales (ej. 90,0000). Debe estar entre 0 y 100</span>
+                    </div>
+                    <div class="legend-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span><strong>Email:</strong> Debe tener formato válido (usuario@dominio.com)</span>
+                    </div>
+                    <div class="legend-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span><strong>Campos opcionales:</strong> Pueden dejarse vacíos si no se tiene la información</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

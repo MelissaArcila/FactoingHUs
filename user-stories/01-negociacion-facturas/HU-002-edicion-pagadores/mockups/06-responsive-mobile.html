@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mockup: Vista Responsive Mobile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #111827;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .device-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .device-mockup {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .device-header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .device-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 4px;
+        }
+
+        .device-size {
+            font-size: 13px;
+            color: #9ca3af;
+        }
+
+        .device-frame {
+            border: 8px solid #374151;
+            border-radius: 16px;
+            overflow: hidden;
+            background-color: white;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-screen {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px 16px;
+            min-height: 600px;
+            overflow-y: auto;
+        }
+
+        .tablet-screen {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 24px;
+            min-height: 500px;
+            overflow-y: auto;
+        }
+
+        /* Mobile Modal */
+        .mobile-modal {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            width: 100%;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-header {
+            padding: 16px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .mobile-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .mobile-close {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+        }
+
+        .mobile-close svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .mobile-body {
+            padding: 20px 16px;
+            max-height: 450px;
+            overflow-y: auto;
+        }
+
+        .mobile-section {
+            margin-bottom: 24px;
+        }
+
+        .mobile-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .mobile-section-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .mobile-field {
+            margin-bottom: 16px;
+        }
+
+        .mobile-field:last-child {
+            margin-bottom: 0;
+        }
+
+        .mobile-label {
+            font-size: 13px;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .mobile-input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .mobile-input:disabled {
+            background-color: #f9fafb;
+            color: #9ca3af;
+        }
+
+        .mobile-input-group {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .mobile-input-group input {
+            flex: 1;
+        }
+
+        .mobile-suffix {
+            font-size: 14px;
+            font-weight: 500;
+            color: #6b7280;
+        }
+
+        .mobile-footer {
+            padding: 16px;
+            background-color: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .mobile-btn {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-btn-primary {
+            background-color: #ef4444;
+            color: white;
+        }
+
+        .mobile-btn-secondary {
+            background-color: white;
+            color: #374151;
+            border: 1px solid #d1d5db;
+        }
+
+        .required {
+            color: #ef4444;
+        }
+
+        .note {
+            background-color: #eff6ff;
+            border-left: 3px solid #3b82f6;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #1e40af;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        /* Tablet specific styles */
+        .tablet-modal {
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        .info-banner {
+            background-color: #fef3c7;
+            border: 1px solid #fbbf24;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 24px;
+        }
+
+        .info-banner-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #92400e;
+            margin-bottom: 8px;
+        }
+
+        .info-banner-text {
+            font-size: 13px;
+            color: #78350f;
+            line-height: 1.6;
+        }
+
+        .info-banner ul {
+            margin-top: 8px;
+            padding-left: 20px;
+        }
+
+        .info-banner li {
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Vista Responsive - Mobile y Tablet</h1>
+
+        <div class="info-banner">
+            <div class="info-banner-title">Consideraciones de Diseño Responsive</div>
+            <div class="info-banner-text">
+                <strong>Mobile (320px - 768px):</strong>
+                <ul>
+                    <li>Modal ocupa el 100% de la pantalla</li>
+                    <li>Botones apilados verticalmente en footer</li>
+                    <li>Campos de formulario con padding generoso para touch</li>
+                    <li>Font-size mínimo de 14px para legibilidad</li>
+                </ul>
+                <strong>Tablet (768px - 1024px):</strong>
+                <ul>
+                    <li>Modal ocupa 90% del ancho con margen centrado</li>
+                    <li>Botones pueden ir horizontalmente si hay espacio</li>
+                    <li>Mantiene estructura similar al desktop</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="device-grid">
+            <!-- Mobile -->
+            <div class="device-mockup">
+                <div class="device-header">
+                    <div class="device-name">📱 Mobile</div>
+                    <div class="device-size">375px × 667px</div>
+                </div>
+                <div class="device-frame">
+                    <div class="mobile-screen">
+                        <div class="mobile-modal">
+                            <div class="mobile-header">
+                                <h2 class="mobile-title">Editar Pagador</h2>
+                                <div class="mobile-close">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div class="mobile-body">
+                                <div class="note">
+                                    <strong>Nota:</strong> Desliza hacia abajo para ver todos los campos del formulario.
+                                </div>
+
+                                <div class="mobile-section">
+                                    <div class="mobile-section-title">Información del Pagador</div>
+                                    <div class="mobile-field">
+                                        <label class="mobile-label">Razón Social</label>
+                                        <input type="text" class="mobile-input" value="IMPORGLOBEX S.A.S" disabled>
+                                    </div>
+                                    <div class="mobile-field">
+                                        <label class="mobile-label">NIT</label>
+                                        <input type="text" class="mobile-input" value="901045489" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="mobile-section">
+                                    <div class="mobile-section-title">Configuración de Tasas</div>
+                                    <div class="mobile-field">
+                                        <label class="mobile-label">Tasa de descuento <span class="required">*</span></label>
+                                        <div class="mobile-input-group">
+                                            <input type="number" class="mobile-input" value="2.2">
+                                            <span class="mobile-suffix">%</span>
+                                        </div>
+                                    </div>
+                                    <div class="mobile-field">
+                                        <label class="mobile-label">Tasa de desembolso <span class="required">*</span></label>
+                                        <div class="mobile-input-group">
+                                            <input type="number" class="mobile-input" value="90">
+                                            <span class="mobile-suffix">%</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mobile-section">
+                                    <div class="mobile-section-title">Contacto</div>
+                                    <div class="mobile-field">
+                                        <label class="mobile-label">Correo de contacto</label>
+                                        <input type="email" class="mobile-input" value="akshay@factorfox.com">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mobile-footer">
+                                <button class="mobile-btn mobile-btn-primary">Guardar</button>
+                                <button class="mobile-btn mobile-btn-secondary">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tablet -->
+            <div class="device-mockup">
+                <div class="device-header">
+                    <div class="device-name">📱 Tablet</div>
+                    <div class="device-size">768px × 1024px</div>
+                </div>
+                <div class="device-frame">
+                    <div class="tablet-screen">
+                        <div class="mobile-modal tablet-modal">
+                            <div class="mobile-header">
+                                <h2 class="mobile-title" style="font-size: 20px;">Editar Pagador</h2>
+                                <div class="mobile-close">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div class="mobile-body" style="padding: 24px;">
+                                <div class="mobile-section">
+                                    <div class="mobile-section-title" style="font-size: 14px;">Información del Pagador</div>
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                                        <div class="mobile-field">
+                                            <label class="mobile-label">Razón Social</label>
+                                            <input type="text" class="mobile-input" value="IMPORGLOBEX S.A.S" disabled>
+                                        </div>
+                                        <div class="mobile-field">
+                                            <label class="mobile-label">NIT</label>
+                                            <input type="text" class="mobile-input" value="901045489" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mobile-section">
+                                    <div class="mobile-section-title" style="font-size: 14px;">Configuración de Tasas</div>
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                                        <div class="mobile-field">
+                                            <label class="mobile-label">Tasa de descuento <span class="required">*</span></label>
+                                            <div class="mobile-input-group">
+                                                <input type="number" class="mobile-input" value="2.2">
+                                                <span class="mobile-suffix">%</span>
+                                            </div>
+                                        </div>
+                                        <div class="mobile-field">
+                                            <label class="mobile-label">Tasa de desembolso <span class="required">*</span></label>
+                                            <div class="mobile-input-group">
+                                                <input type="number" class="mobile-input" value="90">
+                                                <span class="mobile-suffix">%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mobile-section">
+                                    <div class="mobile-section-title" style="font-size: 14px;">Contacto</div>
+                                    <div class="mobile-field">
+                                        <label class="mobile-label">Correo de contacto</label>
+                                        <input type="email" class="mobile-input" value="akshay@factorfox.com">
+                                    </div>
+                                </div>
+
+                                <div style="font-size: 12px; color: #6b7280; margin-top: 20px; padding-top: 16px; border-top: 1px solid #f3f4f6;">
+                                    <span class="required">*</span> Campos requeridos
+                                </div>
+                            </div>
+
+                            <div class="mobile-footer" style="flex-direction: row; justify-content: flex-end;">
+                                <button class="mobile-btn mobile-btn-secondary" style="width: auto; padding: 12px 24px;">Cancelar</button>
+                                <button class="mobile-btn mobile-btn-primary" style="width: auto; padding: 12px 24px;">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
